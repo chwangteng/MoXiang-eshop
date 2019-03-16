@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="common" extends="struts-default">
+		<result-types>
+			<result-type name="validators_json" class="com.wt.util.ValidatorAJAX"
+				default="false"></result-type>
+		</result-types>
+
+		<action name="FeaturesAction" class="com.wt.action.FeaturesAction"
+			method="displayFeatures">
+			<result name="success">/frontend/index.jsp</result>
+		</action>
+		<action name="displayProductDetail" class="com.wt.action.ProductAction"
+			method="displayProductDetail">
+			<result type="chain">
+				<param name="actionName">displayProductMessages</param>
+			</result>
+		</action>
+
+		<action name="addCart" class="com.wt.action.ProductAction"
+			method="addCart">
+			<result name="success">/frontend/cart.jsp</result>
+			<result name="error" type="validators_json"></result>
+		</action>
+		<action name="removeCart" class="com.wt.action.ProductAction"
+			method="removeCart">
+			<result name="success">/frontend/cart.jsp</result>
+			<result name="error" type="validators_json"></result>
+		</action>
+
+		<action name="displayProductMessages" class="com.wt.action.MessageAction"
+			method="displayProductMessages">
+			<result name="success">/frontend/productdetail.jsp</result>
+		</action>
+
+		<action name="register" class="com.wt.action.UserAction" method="register">
+			<result name="success" type="validators_json"></result>
+			<result name="input" type="validators_json"></result>
+		</action>
+
+		<action name="login" class="com.wt.action.UserAction" method="login">
+			<result name="success" type="validators_json"></result>
+			<result name="input" type="validators_json"></result>
+		</action>
+		
+		<action name="displayconsignee" class="com.wt.action.ConsigneeAction"
+			method="displayconsignee">
+			<result name="success">/frontend/checkout.jsp</result>
+		</action>
+		
+		<action name="preparecheckout" class="com.wt.action.OrderAction"
+			method="preparecheckout">
+			<result type="chain">
+				<param name="actionName">displayconsignee</param>
+			</result>
+		</action>
+		
+		
+		<action name="displayPurchase" class="com.wt.action.OrderAction"
+			method="displayPurchase">
+			<result name="success">/frontend/order.jsp</result>
+		</action>
+		
+		<action name="executeOrder" class="com.wt.action.OrderAction"
+			method="executeOrder">
+			<result name="success">/frontend/pay.jsp</result>
+		</action>
+		
+		<action name="preparepay" class="com.wt.action.OrderAction"
+			method="preparepay">
+			<result name="success">/frontend/pay.jsp</result>
+		</action>
+		
+		<action name="pay" class="com.wt.action.OrderAction"
+			method="pay">
+			<result type="chain">
+				<param name="actionName">displayPurchase</param>
+			</result>
+		</action>
+		
+		<action name="addMessage" class="com.wt.action.MessageAction"
+			method="addMessage">
+			<result type="chain">
+				<param name="actionName">displayProductDetail</param>
+			</result>
+		</action>
+		
+		<action name="confirmReceived" class="com.wt.action.OrderAction"
+			method="confirmReceived">
+			<result type="chain">
+				<param name="actionName">displayPurchase</param>
+			</result>
+		</action>
+		
+		<action name="deliver" class="com.wt.action.OrderAction"
+			method="deliver">
+			<result type="chain">
+				<param name="actionName">displaySold</param>
+			</result>
+		</action>
+		
+		<action name="displaySold" class="com.wt.action.OrderAction"
+			method="displaySold">
+			<result name="success">/frontend/sold.jsp</result>
+		</action>
+
+		<action name="cancalorder" class="com.wt.action.OrderAction"
+			method="cancalorder">
+			<result type="chain">
+				<param name="actionName">displaySold</param>
+			</result>
+		</action>
+		
+		<action name="displayonsale" class="com.wt.action.ProductAction"
+			method="displayonsale">
+			<result name="success">/frontend/onsale.jsp</result>
+		</action>
+		
+		<action name="logout" class="com.wt.action.UserAction"
+			method="logout">
+			<result type="chain">
+				<param name="actionName">FeaturesAction</param>
+			</result>
+		</action>
+		
+		<action name="addProduct" class="com.wt.action.ProductAction"
+			method="addProduct">
+			<result type="chain">
+				<param name="actionName">displayonsale</param>
+			</result>
+		</action>
+		
+		<action name="search" class="com.wt.action.ProductAction"
+			method="search">
+			<result name="success">/frontend/searchresult.jsp</result>
+		</action>
+		
+		<action name="searchcategory" class="com.wt.action.ProductAction"
+			method="searchcategory">
+			<result name="success">/frontend/searchresult.jsp</result>
+		</action>
+		
+		
+		<action name="displayalluser" class="com.wt.action.UserAction"
+			method="displayalluser">
+			<result name="success">/backend/userlist.jsp</result>
+		</action>
+		
+		<action name="deleteuser" class="com.wt.action.UserAction"
+			method="deleteuser">
+			<result type="chain">
+				<param name="actionName">displayalluser</param>
+			</result>
+		</action>
+		
+		<action name="prepareupdateuser" class="com.wt.action.UserAction"
+			method="prepareupdateuser">
+			<result name="success">/backend/edituser.jsp</result>
+		</action>
+		
+		<action name="updateuser" class="com.wt.action.UserAction"
+			method="updateuser">
+			<result type="chain">
+				<param name="actionName">displayalluser</param>
+			</result>
+		</action>
+		
+		<action name="displayallproduct" class="com.wt.action.ProductAction"
+			method="displayallproduct">
+			<result name="success">/backend/productlist.jsp</result>
+		</action>
+		
+		<action name="deleteproduct" class="com.wt.action.ProductAction"
+			method="deleteproduct">
+			<result type="chain">
+				<param name="actionName">displayallproduct</param>
+			</result>
+		</action>
+		
+		<action name="updateproduct" class="com.wt.action.ProductAction"
+			method="updateproduct">
+			<result type="chain">
+				<param name="actionName">displayallproduct</param>
+			</result>
+		</action>
+		
+		
+		<action name="prepareupdateproduct" class="com.wt.action.ProductAction"
+			method="prepareupdateproduct">
+			<result name="success">/backend/editproduct.jsp</result>
+		</action>
+		
+		
+		<action name="displayallorder" class="com.wt.action.OrderAction"
+			method="displayallorder">
+			<result name="success">/backend/orderlist.jsp</result>
+		</action>
+		
+		<action name="cancalorderbyadmin" class="com.wt.action.OrderAction"
+			method="cancalorderbyadmin">
+			<result type="chain">
+				<param name="actionName">displayallorder</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		
+		<action name="displayallmessage" class="com.wt.action.MessageAction"
+			method="displayallmessage">
+			<result name="success">/backend/messagelist.jsp</result>
+		</action>
+		
+		<action name="deletemessage" class="com.wt.action.MessageAction"
+			method="deletemessage">
+			<result type="chain">
+				<param name="actionName">displayallmessage</param>
+			</result>
+		</action>
+		
+		<action name="addconsignee" class="com.wt.action.ConsigneeAction"
+			method="addconsignee">
+			<result name="success">/frontend/consignee.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>
