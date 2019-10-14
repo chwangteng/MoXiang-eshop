@@ -7,8 +7,6 @@
 ![无法加载图片](https://raw.githubusercontent.com/chwangteng/MoXiang-eshop/master/4.png)
 ![无法加载图片](https://raw.githubusercontent.com/chwangteng/MoXiang-eshop/master/5.png)
 ![无法加载图片](https://raw.githubusercontent.com/chwangteng/MoXiang-eshop/master/6.png)
-![无法加载图片](https://raw.githubusercontent.com/chwangteng/MoXiang-eshop/master/7.png)
-![无法加载图片](https://raw.githubusercontent.com/chwangteng/MoXiang-eshop/master/8.png)
 ![无法加载图片](https://raw.githubusercontent.com/chwangteng/MoXiang-eshop/master/9.png)
 
 
